@@ -123,3 +123,21 @@ body {
 #restartGame:active {
    transform: scale(0.98); 
 }
+
+#globalReset {
+    outline: none;
+    border: none;
+    padding: .8rem 4rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 9px var(--bg-color-dark);
+    background-color: #09203F;
+    color: var(--text-color-white);
+    transition: background-color .3s;
+}
+
+#globalReset:active {
+  background-color: #537895;
+  transform: translateY(4px);
+}

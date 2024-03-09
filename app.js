@@ -78,4 +78,12 @@ function restartGame() {
   ContainerEl.classList.remove("success");
 }
 
+// GLOBAL RESET APP
+function handleReset() {
+  document.getElementById("globalReset").addEventListener("click", function () {
+    location.reload();
+  });
+}
+handleReset();
+
 StartGame();
