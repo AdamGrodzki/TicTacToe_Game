@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    transition: .2s ease-in-out;
 }
 :root {
     --text-color-white: #fff;
@@ -10,54 +11,62 @@
     --text-color-mark: #537895;
     --bg-color-dark: #31363F;
 }
-body {
-    background: linear-gradient(90deg, #09203F, #537895);
+
+html {
     overflow-x: hidden;
+    max-width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+body {
+    background: #537895;
+    font-weight: 500;
+    overflow-x: hidden;
+    width: 100%;
+    background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
 
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    flex-direction: column;
+    margin: 4rem auto;
+
+    width: 400px;
+    display: grid;
 }
 
 .headingGame{ 
     font-size: 56px;
     color: var(--text-color-white);
+    text-align: center;
 }
 
 #gameGrid {
-    padding: 2rem 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    grid-gap: 5px;
-    width: 650px;
-    margin: 30px auto;
-    background: linear-gradient(90deg, #537895 #09203F);
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    height: 50vh;
 }
 
 .cell {
-    height: 130px;
-    width: 130px;
-    display: flex;
-    text-align: center;
+    display: grid;
     justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 5.5rem;
+    background-color: var(--bg-color-dark);
     color: var(--text-color-mark);
     font-weight: 500;
-    font-size: 5.5rem;
     margin: .5rem;
     box-shadow: 2px 2px 5px var(--text-color-black);
-    background-color: var(--bg-color-dark);
     border: 2px solid var(--text-color-black);
-    border-radius: 5px;
-    cursor: pointer;
+    transition: background .3s ease-in;
+    height: 100px;
 }
+
+.cell:hover {
+    background-color: var(--text-color-white);
+}
+
 
 .container.success .cell {
     cursor: not-allowed;
@@ -96,16 +105,6 @@ body {
     padding: 10px;
 }
 
- #winner {
-    position: absolute;
-    width: 650px;
-    height: 450px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 5px 10px 10px #000;
-    display: none; 
- }
-
 #restartGame {
     outline: none;
     border: none;
@@ -134,10 +133,94 @@ body {
     box-shadow: 0 9px var(--bg-color-dark);
     background-color: #09203F;
     color: var(--text-color-white);
+    margin-top: 20px;
     transition: background-color .3s;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #globalReset:active {
   background-color: #537895;
   transform: translateY(4px);
 }
+ 
+  @media only screen and (max-width: 500px) {
+    .container {
+      position: relative;
+      width: 100%;
+    }
+
+    #gameGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        padding: 2rem;
+        height: 30vh;
+      }
+
+      .modal {
+        padding: 2rem;
+        background: var(--text-color-white);
+        width: 100%;
+        margin-left: -31px;
+      }
+      #globalReset {
+        margin-top: 200px;
+      }
+}
+
+@media only screen and (min-width: 500px) {
+    .container {
+      width: 100%;
+      position: relative;
+    }
+    #gameGrid {
+      margin-top: 8rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      height: 50vh;
+      padding: 2rem;
+    }
+    .modal {
+      margin: 5rem auto;
+      padding: 1rem;
+      width: 45%;
+  
+      height: auto;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .container {
+      width: 100%;
+      position: relative;
+    }
+    #gameGrid {
+      margin: 4rem auto;
+      width: 50%;
+  
+      gap: 5px;
+      padding: 2rem;
+    }
+  }
+
+  @media only screen and (min-width: 2000px) {
+    .container {
+      width: 50%;
+      position: relative;
+    }
+  
+    #gameGrid {
+      margin-top: 4rem;
+  
+      gap: 5px;
+      padding: 4rem;
+      height: 150px;
+    }
+  
+    .cell {
+      font-size: 50px;
+      height: 150px;
+      width: 150px;
+    }
+  }  
